@@ -6,16 +6,16 @@ import org.loginsystem.dtos.requests.UserLoginRequest;
 import org.loginsystem.dtos.requests.UserSignUpRequest;
 import org.loginsystem.dtos.responses.UserLoginResponse;
 import org.loginsystem.dtos.responses.UserSignUpResponse;
-import org.loginsystem.exceptions.InvalidInputException;
 import org.loginsystem.exceptions.UserAlreadyExistException;
-import org.loginsystem.exceptions.UserDoesNotExistException;
 import org.loginsystem.utils.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
+
 @Service
 public class UserManagementService {
+
 
     @Autowired
     UserRepository userRepository;
@@ -26,10 +26,6 @@ public class UserManagementService {
        userRepository.save(user);
        return Mapper.mapUserToResponse(user);
     }
-
-
-
-
 
 
 

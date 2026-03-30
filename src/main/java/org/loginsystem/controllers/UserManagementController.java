@@ -1,17 +1,15 @@
 package org.loginsystem.controllers;
 
+import org.loginsystem.dtos.requests.UserLoginRequest;
 import org.loginsystem.dtos.requests.UserSignUpRequest;
-import org.loginsystem.dtos.responses.UserSignUpResponse;
 import org.loginsystem.exceptions.InvalidInputException;
+import org.loginsystem.exceptions.UserDoesNotExistException;
 import org.loginsystem.services.UserManagementService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @SpringBootApplication
 @RestController
@@ -32,6 +30,16 @@ public class UserManagementController {
         }
     }
 
+
+    @GetMapping("/log-user-in")
+    public ResponseEntity<?> loginUser(@RequestBody UserLoginRequest userLoginRequest){
+        try{
+            return ResponseEntity.status(HttpStatus.FOUND).body(userManagementService.logUserIn(userLoginRequest));
+        }
+        catch(UserDoesNotExistException error){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(error.getMessage());
+        }
+    }
 
 
 }
