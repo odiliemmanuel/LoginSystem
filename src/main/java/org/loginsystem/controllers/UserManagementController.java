@@ -31,15 +31,15 @@ public class UserManagementController {
     }
 
 
-    @GetMapping("/log-user-in")
-    public ResponseEntity<?> loginUser(@RequestBody UserLoginRequest userLoginRequest){
-        try{
-            return ResponseEntity.status(HttpStatus.FOUND).body(userManagementService.logUserIn(userLoginRequest));
-        }
-        catch(UserDoesNotExistException error){
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(error.getMessage());
-        }
-    }
+//    @GetMapping("/log-user-in")
+//    public ResponseEntity<?> loginUser(@RequestBody UserLoginRequest userLoginRequest){
+//        try{
+//            return ResponseEntity.status(HttpStatus.FOUND).body(userManagementService.logUserIn(userLoginRequest));
+//        }
+//        catch(UserDoesNotExistException error){
+//            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(error.getMessage());
+//        }
+//    }
 
 
 }
