@@ -18,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @SpringBootTest
-public class UserManagementTest
+public class UserManagementTest{
 
     @Autowired
     UserManagementService userManagementService;
